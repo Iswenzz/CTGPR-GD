@@ -5,22 +5,10 @@ using System.Threading.Tasks;
 
 namespace CTGPR.Downloader.Progress
 {
-    /// <summary>
-    /// Shell progress bar download.
-    /// </summary>
-    /// <param name="title">The title.</param>
-    /// <param name="parent">The parent progress.</param>
     public class ProgressDownload(string title, ProgressBase parent = null) : ProgressBase(title, parent), IDisposable
     {
         private HttpClient HTTP { get; set; } = new();
 
-        /// <summary>
-        /// Download the file.
-        /// </summary>
-        /// <param name="url">The download url.</param>
-        /// <param name="folder">The download folder.</param>
-        /// <param name="file">The file name.</param>
-        /// <returns></returns>
         public async Task Download(string url, string folder, string file)
         {
             using var response = await HTTP.GetAsync(url, HttpCompletionOption.ResponseHeadersRead);
@@ -42,9 +30,6 @@ namespace CTGPR.Downloader.Progress
             }
         }
 
-        /// <summary>
-        /// Release all resources.
-        /// </summary>
         public override void Dispose()
         {
             base.Dispose();

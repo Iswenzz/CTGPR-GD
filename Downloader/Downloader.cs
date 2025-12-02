@@ -12,18 +12,12 @@ using CTGPR.Downloader.Progress;
 
 namespace CTGPR.Downloader
 {
-    /// <summary>
-    /// Ghost downloader.
-    /// </summary>
     public static class Downloader
     {
         private static HttpClient HTTP { get; set; } = new();
         private static ProgressBase Progress { get; set; }
         public static int Downloaded { get; set; }
 
-        /// <summary>
-        /// Download leaderboards.
-        /// </summary>
         public static async Task Leaderboards()
         {
             if (!Directory.Exists("ghosts"))
@@ -55,10 +49,6 @@ namespace CTGPR.Downloader
             Console.WriteLine($"Successfully downloaded {Downloaded} ghosts.");
         }
 
-        /// <summary>
-        /// Download tracks.
-        /// </summary>
-        /// <param name="leaderboards">The leaderboards.</param>
         public static async Task Tracks(JObject leaderboards)
         {
             var tracks = leaderboards["leaderboards"].ToList();
@@ -67,10 +57,6 @@ namespace CTGPR.Downloader
             Progress.Message = $"{Progress.Title}: {Progress.CurrentTick}/{Progress.MaxTick}";
         }
 
-        /// <summary>
-        /// Download track.
-        /// </summary>
-        /// <param name="track">The track.</param>
         public static async Task Track(JToken track)
         {
             Progress.Message = $"{Progress.Title}: {Progress.CurrentTick}/{Progress.MaxTick}";
@@ -85,11 +71,6 @@ namespace CTGPR.Downloader
             Progress.Tick(Progress.CurrentTick + 1);
         }
 
-        /// <summary>
-        /// Prompt user for input.
-        /// </summary>
-        /// <param name="message">Prompt message.</param>
-        /// <returns></returns>
         public static bool AskUser(string message)
         {
             Console.WriteLine();
@@ -106,9 +87,6 @@ namespace CTGPR.Downloader
             return true;
         }
 
-        /// <summary>
-        /// Release all resources.
-        /// </summary>
         public static void Shutdown()
         {
             Progress?.Dispose();

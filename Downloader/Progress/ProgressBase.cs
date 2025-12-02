@@ -5,9 +5,6 @@ using ShellProgressBar;
 
 namespace CTGPR.Downloader.Progress
 {
-    /// <summary>
-    /// Shell progress bar.
-    /// </summary>
     public class ProgressBase : IDisposable
     {
         public string Title { get; set; }
@@ -19,11 +16,6 @@ namespace CTGPR.Downloader.Progress
         protected ProgressBarBase Bar { get; set; }
         protected Stopwatch Stopwatch { get; set; } = new();
 
-        /// <summary>
-        /// Initialize a new <see cref="ProgressBase"/>.
-        /// </summary>
-        /// <param name="title">The title.</param>
-        /// <param name="parent">The parent progress.</param>
         public ProgressBase(string title, ProgressBase parent = null)
         {
             ProgressBarOptions options = new()
@@ -51,19 +43,11 @@ namespace CTGPR.Downloader.Progress
             Task.Run(Frame);
         }
 
-        /// <summary>
-        /// Progress bar tick.
-        /// </summary>
-        /// <param name="tick">The tick.</param>
         public virtual void Tick(int tick)
         {
             Bar.Tick(tick, Clock(tick), Message);
         }
 
-        /// <summary>
-        /// Clock control.
-        /// </summary>
-        /// <param name="tick">The tick.</param>
         protected virtual TimeSpan Clock(int tick)
         {
             tick = tick > 0 ? tick : 1;
@@ -80,10 +64,6 @@ namespace CTGPR.Downloader.Progress
             return TimeSpan.FromSeconds(remainingSeconds);
         }
 
-        /// <summary>
-        /// Progress bar frame.
-        /// </summary>
-        /// <returns></returns>
         protected virtual async Task Frame()
         {
             while (Bar != null && Bar.CurrentTick != Bar.MaxTicks)
@@ -93,9 +73,6 @@ namespace CTGPR.Downloader.Progress
             }
         }
 
-        /// <summary>
-        /// Release all resources.
-        /// </summary>
         public virtual void Dispose()
         {
             if (Bar is ProgressBar bar)
