@@ -1,9 +1,5 @@
 # CTGPR-GD
 
-[![Checks](https://img.shields.io/github/check-runs/Iswenzz/CTGPR-GD/master?logo=github)](https://github.com/Iswenzz/CTGPR-GD/actions)
-[![CodeFactor](https://img.shields.io/codefactor/grade/github/Iswenzz/CTGPR-GD?label=codefactor&logo=codefactor)](https://www.codefactor.io/repository/github/iswenzz/CTGPR-GD)
-[![License](https://img.shields.io/github/license/Iswenzz/CTGPR-GD?color=blue&logo=gitbook&logoColor=white)](https://github.com/Iswenzz/CTGPR-GD/blob/master/LICENSE)
-
 ![](https://i.imgur.com/SH7M1Th.jpeg)
 
 The purpose of CTGPR-GD is to be able to view rankings and download all of the Mario Kart WII world records from the CTGP leaderboards. Ghosts that will be downloaded include all original tracks at 150cc and 200cc, as well as CTGP custom tracks at 150cc and 200cc.
